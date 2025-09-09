@@ -386,18 +386,3 @@ window.onclick = function(event) {
         }
     });
 }
-
-<div id="faqModal" class="modal">
-    <div class="modal-content">
-        <span class="close" onclick="closeModal('faqModal')">&times;</span>
-        <h2>Ajouter une FAQ</h2>
-        <input id="faq_question" type="text" placeholder="Question">
-        <textarea id="faq_answer" placeholder="Réponse"></textarea>
-        <input id="faq_order" type="number" placeholder="Ordre">
-        <button onclick="saveFAQ()">Enregistrer</button>
-    </div>
-</div>
-
-function showAddFAQModal() {
-    document.getElementById('faqModal').style.display = 'block';
-}
