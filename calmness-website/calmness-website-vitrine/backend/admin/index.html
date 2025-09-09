@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self' https://cdnjs.cloudflare.com; font-src 'self' https://cdnjs.cloudflare.com; script-src 'self' https://cdnjs.cloudflare.com;">
+    <meta http-equiv="X-Frame-Options" content="DENY">
+    <meta http-equiv="X-Content-Type-Options" content="nosniff">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Administration - Calmness FI</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="admin-container">
+        <!-- Sidebar -->
+        <nav class="sidebar">
+            <div class="sidebar-header">
+                <h2><i class="fas fa-crown"></i> Calmness Admin</h2>
+            </div>
+            <ul class="sidebar-menu">
+                <li><a href="#dashboard" class="active" data-section="dashboard"><i class="fas fa-tachometer-alt"></i> Dashboard</a></li>
+                <li><a href="#home" data-section="home"><i class="fas fa-home"></i> Page d'accueil</a></li>
+                <li><a href="#about" data-section="about"><i class="fas fa-info-circle"></i> À propos</a></li>
+                <li><a href="#services" data-section="services"><i class="fas fa-cogs"></i> Services</a></li>
+                <li><a href="#contact" data-section="contact"><i class="fas fa-envelope"></i> Contact</a></li>
+                <li><a href="#faq" data-section="faq"><i class="fas fa-question-circle"></i> FAQ</a></li>
+            </ul>
+        </nav>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Dashboard Section -->
+            <section id="dashboard" class="content-section active">
+                <div class="section-header">
+                    <h1><i class="fas fa-tachometer-alt"></i> Dashboard</h1>
+                    <p>Gérez le contenu de votre site Calmness FI</p>
+                </div>
+                
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-file-alt"></i>
+                        </div>
+                        <div class="stat-content">
+                            <h3>Pages</h3>
+                            <p>4 pages configurées</p>
+                        </div>
+                    </div>
+                    
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-cogs"></i>
+                        </div>
+                        <div class="stat-content">
+                            <h3>Services</h3>
+                            <p id="services-count">0 services</p>
+                        </div>
+                    </div>
+                    
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-question-circle"></i>
+                        </div>
+                        <div class="stat-content">
+                            <h3>FAQ</h3>
+                            <p id="faq-count">0 questions</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Home Page Section -->
+            <section id="home" class="content-section">
+                <div class="section-header">
+                    <h1><i class="fas fa-home"></i> Page d'accueil</h1>
+                    <p>Modifiez le contenu de la page d'accueil</p>
+                </div>
+                
+                <div class="content-form">
+                    <div class="form-group">
+                        <label for="hero_title">Titre principal</label>
+                        <input type="text" id="hero_title" placeholder="Titre de la section hero">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="hero_subtitle">Sous-titre</label>
+                        <input type="text" id="hero_subtitle" placeholder="Sous-titre de la section hero">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="about_title">Titre section À propos</label>
+                        <input type="text" id="about_title" placeholder="Titre de la section à propos">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="about_text_1">Texte à propos 1</label>
+                        <textarea id="about_text_1" rows="4" placeholder="Premier paragraphe de la section à propos"></textarea>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="about_text_2">Texte à propos 2</label>
+                        <textarea id="about_text_2" rows="4" placeholder="Deuxième paragraphe de la section à propos"></textarea>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="about_text_3">Texte à propos 3</label>
+                        <textarea id="about_text_3" rows="4" placeholder="Troisième paragraphe de la section à propos"></textarea>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="services_title">Titre section Services</label>
+                        <input type="text" id="services_title" placeholder="Titre de la section services">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="contact_title">Titre section Contact</label>
+                        <input type="text" id="contact_title" placeholder="Titre de la section contact">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="contact_email">Email de contact</label>
+                        <input type="email" id="contact_email" placeholder="Email de contact">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="contact_phone">Téléphone de contact</label>
+                        <input type="tel" id="contact_phone" placeholder="Téléphone de contact">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="contact_address">Adresse</label>
+                        <input type="text" id="contact_address" placeholder="Adresse">
+                    </div>
+                    
+                    <button class="btn btn-primary" onclick="savePageContent('accueil')">
+                        <i class="fas fa-save"></i> Sauvegarder
+                    </button>
+                </div>
+            </section>
+
+            <!-- About Page Section -->
+            <section id="about" class="content-section">
+                <div class="section-header">
+                    <h1><i class="fas fa-info-circle"></i> Page À propos</h1>
+                    <p>Modifiez le contenu de la page à propos</p>
+                </div>
+                
+                <div class="content-form">
+                    <div class="form-group">
+                        <label for="about_hero_title">Titre principal</label>
+                        <input type="text" id="about_hero_title" placeholder="Titre de la page à propos">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="about_hero_subtitle">Sous-titre</label>
+                        <input type="text" id="about_hero_subtitle" placeholder="Sous-titre de la page à propos">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="about_intro_text">Texte d'introduction</label>
+                        <textarea id="about_intro_text" rows="3" placeholder="Texte d'introduction"></textarea>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="about_mission_title">Titre mission</label>
+                        <input type="text" id="about_mission_title" placeholder="Titre de la section mission">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="about_mission_intro">Introduction mission</label>
+                        <textarea id="about_mission_intro" rows="3" placeholder="Introduction de la section mission"></textarea>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="about_family_title">Titre famille</label>
+                        <input type="text" id="about_family_title" placeholder="Titre de la section famille">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="about_values_title">Titre valeurs</label>
+                        <input type="text" id="about_values_title" placeholder="Titre de la section valeurs">
+                    </div>
+                    
+                    <button class="btn btn-primary" onclick="savePageContent('a-propos')">
+                        <i class="fas fa-save"></i> Sauvegarder
+                    </button>
+                </div>
+            </section>
+
+            <!-- Services Section -->
+            <section id="services" class="content-section">
+                <div class="section-header">
+                    <h1><i class="fas fa-cogs"></i> Services</h1>
+                    <p>Gérez les services proposés</p>
+                    <button class="btn btn-success" onclick="showAddServiceModal()">
+                        <i class="fas fa-plus"></i> Ajouter un service
+                    </button>
+                </div>
+                
+                <div class="services-list" id="services-list">
+                    <!-- Services will be loaded here -->
+                </div>
+            </section>
+
+            <!-- Contact Page Section -->
+            <section id="contact" class="content-section">
+                <div class="section-header">
+                    <h1><i class="fas fa-envelope"></i> Page Contact</h1>
+                    <p>Modifiez les informations de contact</p>
+                </div>
+                
+                <div class="content-form">
+                    <div class="form-group">
+                        <label for="contact_hero_title">Titre principal</label>
+                        <input type="text" id="contact_hero_title" placeholder="Titre de la page contact">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="contact_hero_subtitle">Sous-titre</label>
+                        <input type="text" id="contact_hero_subtitle" placeholder="Sous-titre de la page contact">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="contact_address">Adresse</label>
+                        <input type="text" id="contact_address" placeholder="Adresse">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="contact_phone">Téléphone</label>
+                        <input type="tel" id="contact_phone" placeholder="Téléphone">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="contact_email">Email</label>
+                        <input type="email" id="contact_email" placeholder="Email">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="contact_schedule">Horaires</label>
+                        <input type="text" id="contact_schedule" placeholder="Horaires">
+                    </div>
+                    
+                    <button class="btn btn-primary" onclick="savePageContent('contact')">
+                        <i class="fas fa-save"></i> Sauvegarder
+                    </button>
+                </div>
+            </section>
+
+            <!-- FAQ Section -->
+            <section id="faq" class="content-section">
+                <div class="section-header">
+                    <h1><i class="fas fa-question-circle"></i> FAQ</h1>
+                    <p>Gérez les questions fréquemment posées</p>
+                    <button class="btn btn-success" onclick="showAddFAQModal()">
+                        <i class="fas fa-plus"></i> Ajouter une FAQ
+                    </button>
+                </div>
+                
+                <div class="faq-list" id="faq-list">
+                    <!-- FAQ will be loaded here -->
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- Modals -->
+    <!-- Add Service Modal -->
+    <div id="serviceModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Ajouter/Modifier un service</h3>
+                <span class="close" onclick="closeModal('serviceModal')">&times;</span>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label for="service_title">Titre</label>
+                    <input type="text" id="service_title" placeholder="Titre du service">
+                </div>
+                <div class="form-group">
+                    <label for="service_description">Description</label>
+                    <textarea id="service_description" rows="3" placeholder="Description du service"></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="service_icon">Icône (classe FontAwesome)</label>
+                    <input type="text" id="service_icon" placeholder="fa-solid fa-chart-line">
+                </div>
+                <div class="form-group">
+                    <label for="service_link">Lien</label>
+                    <input type="text" id="service_link" placeholder="/services/formations">
+                </div>
+                <div class="form-group">
+                    <label for="service_order">Ordre</label>
+                    <input type="number" id="service_order" placeholder="1">
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" onclick="closeModal('serviceModal')">Annuler</button>
+                <button class="btn btn-primary" onclick="saveService()">Sauvegarder</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Add FAQ Modal -->
+    <div id="faqModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Ajouter/Modifier une FAQ</h3>
+                <span class="close" onclick="closeModal('faqModal')">&times;</span>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label for="faq_question">Question</label>
+                    <input type="text" id="faq_question" placeholder="Question">
+                </div>
+                <div class="form-group">
+                    <label for="faq_answer">Réponse</label>
+                    <textarea id="faq_answer" rows="4" placeholder="Réponse"></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="faq_order">Ordre</label>
+                    <input type="number" id="faq_order" placeholder="1">
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" onclick="closeModal('faqModal')">Annuler</button>
+                <button class="btn btn-primary" onclick="saveFAQ()">Sauvegarder</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,243 @@
+/* Styles du composant Header (scopés pour Header.tsx) */
+
+header{
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: var(--z-fixed);
+    transition: all 0.3s ease;
+    background: transparent;
+    backdrop-filter: blur(10px);
+    padding: 14px 4.5%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+/* Fond lorsque l'utilisateur défile */
+.header-bg{
+  background: rgba(255,255,255,.95);
+  box-shadow: 0 2px 20px var(--shadow-color);
+}
+[data-theme="dark"] .header-bg{
+  background: rgba(30,35,41,.95);
+}
+
+/* Logo */
+.nav__logo{
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 700;
+  color: var(--text-color);
+  white-space: nowrap;
+}
+.nav__logo img{
+  max-height: 26px;
+  width: auto;
+  height: auto;
+}
+.nav__logo span{
+  color: var(--text-color);
+  font-weight: 700;
+  letter-spacing: 1px;
+  line-height: 1;
+  display: inline-block;
+}
+
+/* Liste de navigation */
+.navlist{
+  display: flex;
+  align-items: center;
+  gap: .6rem;
+  flex-wrap: nowrap;
+  flex: 1;
+  justify-content: center;
+}
+
+.navlist a{
+  display: inline-block;
+  margin: 0 14px;
+  color: var(--text-color);
+  font-size: .92rem;
+  transition: all .3s ease;
+  white-space: nowrap;
+  position: relative;
+}
+
+/* Indicateur du lien actif (soulignement subtil) */
+.navlist a.active-link{
+  color: var(--first-color) !important;
+}
+.navlist a.active-link::after{
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -6px;
+  height: 2px;
+  border-radius: 2px;
+  background: linear-gradient(95deg, var(--second-color) 0%, var(--first-color) 100%);
+}
+
+.navlist a:hover{
+  color: var(--first-color);
+}
+
+/* Zone à droite (desktop) */
+.right-content{
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-shrink: 0;
+}
+
+/* Boutons d'authentification */
+.nav__auth-link,
+.nav__auth-button{
+  display: inline-block;
+  background: transparent;
+  border: 2px solid var(--text-color);
+  font-size: 14px;
+  font-weight: 500;
+  transition: all .3s ease;
+  padding: 6px 10px;
+  border-radius: 8px;
+}
+
+.nav__auth-button{
+  background: linear-gradient(95deg, var(--second-color) 0%, var(--first-color) 100%);
+  border-color: transparent;
+  color: var(--black-primary);
+}
+
+.nav__auth-link:hover{
+  transform: translateY(-2px);
+  border-color: var(--first-color);
+  color: var(--first-color);
+}
+
+/* Bouton toggle du thème (apparence) */
+.theme-toggle{
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: background .2s ease, color .2s ease, transform .2s ease, border-color .2s ease;
+}
+/* Mode clair: fond clair, bord foncé, icône foncée */
+[data-theme="light"] .theme-toggle{
+  background: var(--white-secondary) !important;
+  border: 1px solid var(--black-tertiary) !important;
+  color: var(--black-primary) !important;
+}
+/* Mode sombre: fond sombre, bord clair, icône claire */
+[data-theme="dark"] .theme-toggle{
+  background: var(--black-secondary) !important;
+  border: 1px solid var(--white-tertiary) !important;
+  color: var(--white-primary) !important;
+}
+.theme-toggle:hover{
+  background: var(--first-color) !important;
+  color: var(--black-primary) !important;
+  transform: scale(1.05);
+}
+
+#menu-icon{
+  font-size: 30px;
+  z-index: 10001;
+  cursor: pointer;
+  margin-left: 8px;
+  display: none;
+  background: transparent;
+  border: none;
+  color: var(--text-color);
+}
+
+@media(max-width: 1770px){
+  header{ padding: 12px 4%; }
+}
+
+/* Mobile */
+@media(max-width: 950px){
+  #menu-icon{ display: block; }
+  /* Cacher le toggle et les boutons du header (ils sont dans le menu mobile) */
+  .right-content .theme-toggle,
+  .right-content .nav__auth-link,
+  .right-content .nav__auth-button{ display: none; }
+
+  .navlist{
+    position: fixed;
+    width: 100%;
+    height: 100vh;
+    padding: 28px 16px 20px;
+    top: 0; right: 0; bottom: 0; left: 0;
+    display: flex; flex-direction: column;
+    backdrop-filter: blur(40px);
+    transition: all .6s ease-in-out;
+    left: -100%;
+    justify-content: flex-start;
+    gap: 12px;
+  }
+  .navlist.open{ left: 0; }
+
+  /* Variantes thème pour le menu mobile */
+  [data-theme="dark"] .navlist{ background: rgba(0,0,0,0.86); }
+  [data-theme="light"] .navlist{ background: rgba(255,255,255,0.96); }
+  [data-theme="light"] .navlist a{ color: var(--black-primary) !important; }
+  [data-theme="dark"] .navlist a{ color: var(--white-primary) !important; }
+
+  /* Barre supérieure du menu (toggle à gauche, fermer à droite) */
+  .nav__mobile-topbar{ width: 100%; display: flex; align-items: center; justify-content: space-between; margin-bottom: 8px; }
+  .nav__close{ background: transparent; border: none; }
+  [data-theme="light"] .nav__close{ color: var(--black-primary); }
+  [data-theme="dark"] .nav__close{ color: var(--white-primary); }
+  .nav__mobile-topbar i{ font-size: 20px; }
+
+  .navlist a{ margin: 0; font-size: .98rem; text-align: center; }
+  .navlist a.active-link::after{ background: var(--first-color); }
+
+  /* Boutons d'authentification (mobile, sur une ligne) */
+  .nav__auth-mobile{ width: 100%; margin-top: 12px; }
+  .nav__auth-mobile-container{ display: flex; flex-direction: row; gap: 10px; justify-content: center; }
+  .nav__auth-mobile-container .nav__auth-link,
+  .nav__auth-mobile-container .nav__auth-button{ font-size: .88rem; padding: 8px 12px; }
+  [data-theme="light"] .nav__auth-mobile-container .nav__auth-link{ border-color: var(--black-tertiary); color: var(--black-primary); }
+  [data-theme="dark"] .nav__auth-mobile-container .nav__auth-link{ border-color: var(--white-tertiary); color: var(--white-primary); }
+}
+
+/* Desktop */
+@media(min-width: 951px){
+  /* Toggle visible seulement sur desktop (dans la zone de droite) */
+  .right-content .theme-toggle{ display: inline-flex !important; }
+  .nav__auth-desktop{ display: flex; gap: 10px; }
+  .nav__auth-mobile, .nav__mobile-topbar{ display: none; }
+}
+
+/* Tailles intermédiaires */
+@media (max-width: 1280px) and (min-width: 951px){
+  .navlist a{ margin: 0 12px; font-size: .88rem; }
+  .nav__logo img{ max-height: 24px; }
+}
+
+@media (max-width: 1120px) and (min-width: 951px){
+  .navlist a{ margin: 0 8px; font-size: .84rem; }
+  .nav__logo span{ font-size: .95rem; }
+}
+
+/* Contraste clair/sombre (prévention du texte invisible) */
+[data-theme="dark"] .navlist a{ color: var(--white-primary) !important; }
+[data-theme="dark"] .nav__auth-link{ border-color: var(--white-tertiary); color: var(--white-primary) !important; }
+[data-theme="dark"] .nav__logo span{ color: var(--white-primary) !important; }
+[data-theme="light"] .navlist a{ color: var(--black-primary) !important; }
+[data-theme="light"] .nav__auth-link{ border-color: var(--black-tertiary); color: var(--black-primary) !important; }
+[data-theme="light"] .nav__logo span{ color: var(--black-primary) !important; }
+[data-theme="light"] #menu-icon{ color: var(--black-primary) !important; }
+
+/* (styles du hero déplacés dans styles/pages/home.css) */
+
+

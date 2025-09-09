@@ -1,0 +1,53 @@
+/* Styles de la page d'accueil (Hero) */
+
+/* Mise en page du hero */
+.home{
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+}
+/* Le texte touche le bord gauche */
+.home.container{ margin-left: 0; }
+.home .home__container{ padding-left: 0; padding-right: 2rem; }
+.home__title{ text-align: left; }
+.home__description{ text-align: left; max-width: 560px; margin: .75rem 0 1.25rem; margin-left: 0; font-size: clamp(.95rem, .7rem + .8vw, 1.125rem); }
+.home__line{ display: inline-block; }
+/* Titres fluides */
+.home__line--1{ font-size: clamp(1.8rem, 1.2rem + 2.2vw, 3rem); color: var(--first-color); }
+.home__line--2{ font-size: clamp(2rem, 1.4rem + 2.6vw, 3.5rem); opacity: .95; color: var(--second-color); }
+.home__line--3{ font-size: clamp(2.2rem, 1.6rem + 3vw, 4rem); color: var(--first-color); }
+
+/* Image de fond à droite couvrant l'écran (décalée et zoomée) */
+.home__shape-bg{
+  position: absolute;
+  right: -100vw;
+  top: 0;
+  bottom: 0;
+  height: 100%;
+  width: auto;
+  max-width: 90vw;
+  object-fit: cover;
+  object-position: right center;
+  transform: scale(1.15);
+}
+
+/* Adoucir les lumières et rendre l'image plus claire selon le thème */
+[data-theme="light"] .home__shape-bg{ opacity: 1; }
+[data-theme="dark"] .home__shape-bg{ opacity: 1; }
+[data-theme="light"] .home__shape-small{ filter: blur(110px); opacity: 1; }
+[data-theme="dark"] .home__shape-small{ filter: blur(110px); opacity: .15; }
+[data-theme="light"] .home__shape-big-1{ filter: blur(110px); opacity: 1; }
+[data-theme="light"] .home__shape-big-2{ filter: blur(150px); opacity: 1; }
+[data-theme="dark"] .home__shape-big-1{ filter: blur(110px); opacity: .15; }
+[data-theme="dark"] .home__shape-big-2{ filter: blur(150px); opacity: .15; }
+
+/* CTA fluide */
+.home__button{ font-size: clamp(.9rem, .75rem + .4vw, 1rem); }
+
+@media(max-width: 950px){
+  .home.container{ margin-left: 0; }
+  .home .home__container{ padding-left: 0; padding-right: 1.25rem; }
+  .home__title, .home__description{ text-align: left; }
+  .home__shape-bg{ max-width: 95vw; right: -42vw; opacity: .34; transform: scale(1.2); }
+}

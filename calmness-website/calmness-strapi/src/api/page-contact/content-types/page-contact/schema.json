@@ -1,0 +1,36 @@
+{
+  "kind": "singleType",
+  "collectionName": "page_contacts",
+  "info": {
+    "singularName": "page-contact",
+    "pluralName": "page-contacts",
+    "displayName": "Page Contact",
+    "description": "Contenu de la page contact"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "titre": {
+      "type": "string",
+      "required": true
+    },
+    "adresse": {
+      "type": "text",
+      "required": true
+    },
+    "telephone": {
+      "type": "string",
+      "required": true
+    },
+    "email": {
+      "type": "email",
+      "required": true
+    },
+    "horaires": {
+      "type": "text",
+      "required": false
+    }
+  }
+}

@@ -1,0 +1,652 @@
+/*=============== FAQ ANIMATIONS ===============*/
+
+/* FAQ Hero Animations */
+.faq-hero {
+  position: relative;
+  overflow: hidden;
+}
+
+.faq-hero::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(240, 185, 11, 0.08) 0%, transparent 70%);
+  animation: faqHeroGlow 10s ease-in-out infinite;
+}
+
+@keyframes faqHeroGlow {
+  0%, 100% { 
+    transform: rotate(0deg) scale(1); 
+    opacity: 0.5;
+  }
+  50% { 
+    transform: rotate(180deg) scale(1.2); 
+    opacity: 0.8;
+  }
+}
+
+.faq-hero-content {
+  position: relative;
+  z-index: 2;
+  opacity: 0;
+  transform: translateY(40px);
+  transition: all 1s ease;
+}
+
+.faq-hero-content.animate-in {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.faq-title {
+  position: relative;
+  display: inline-block;
+}
+
+.faq-title::after {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 3px;
+  background: linear-gradient(95deg, var(--second-color) 0%, var(--first-color) 100%);
+  animation: titleUnderline 1.5s ease forwards;
+  animation-delay: 0.5s;
+}
+
+@keyframes titleUnderline {
+  to {
+    width: 100%;
+  }
+}
+
+.faq-title .highlight {
+  animation: highlightPulse 2s ease-in-out infinite;
+}
+
+@keyframes highlightPulse {
+  0%, 100% { 
+    filter: brightness(1);
+  }
+  50% { 
+    filter: brightness(1.2);
+  }
+}
+
+.faq-subtitle {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 1s ease;
+  transition-delay: 0.3s;
+}
+
+.faq-subtitle.animate-in {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* FAQ Search Animations */
+.faq-search {
+  position: relative;
+  overflow: hidden;
+}
+
+.faq-search::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(240, 185, 11, 0.1), transparent);
+  animation: searchShimmer 3s ease-in-out infinite;
+}
+
+@keyframes searchShimmer {
+  0% { left: -100%; }
+  50% { left: 100%; }
+  100% { left: 100%; }
+}
+
+.search-container {
+  position: relative;
+  z-index: 2;
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.8s ease;
+  transition-delay: 0.2s;
+}
+
+.search-container.animate-in {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.search-box {
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.search-box::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(45deg, transparent, rgba(240, 185, 11, 0.05), transparent);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.search-box:focus-within {
+  transform: translateY(-2px);
+}
+
+.search-box:focus-within::before {
+  opacity: 1;
+}
+
+.search-box i {
+  transition: all 0.3s ease;
+}
+
+.search-box:focus-within i {
+  color: var(--first-color);
+  transform: scale(1.1);
+}
+
+.search-input::placeholder {
+  transition: all 0.3s ease;
+}
+
+.search-input:focus::placeholder {
+  opacity: 0.5;
+  transform: translateX(5px);
+}
+
+/* FAQ Category Animations */
+.faq-category {
+  opacity: 0;
+  transform: translateY(50px);
+  transition: all 0.8s ease;
+}
+
+.faq-category.animate-in {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.faq-category::before {
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.6s ease;
+}
+
+.faq-category.animate-in::before {
+  transform: scaleX(1);
+}
+
+.faq-category::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(45deg, transparent, rgba(240, 185, 11, 0.02), transparent);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.faq-category:hover::after {
+  opacity: 1;
+}
+
+/* FAQ Item Animations */
+.faq-item {
+  opacity: 0;
+  transform: translateX(-20px);
+  transition: all 0.4s ease;
+  position: relative;
+}
+
+.faq-item.animate-in {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.faq-item::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 3px;
+  height: 100%;
+  background: linear-gradient(95deg, var(--second-color) 0%, var(--first-color) 100%);
+  transform: scaleY(0);
+  transform-origin: top;
+  transition: transform 0.3s ease;
+}
+
+.faq-item:hover::before {
+  transform: scaleY(1);
+}
+
+.faq-item:hover {
+  transform: translateY(-2px);
+}
+
+.faq-question {
+  position: relative;
+  z-index: 2;
+  transition: all 0.3s ease;
+}
+
+.faq-question::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(45deg, transparent, rgba(240, 185, 11, 0.05), transparent);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.faq-question:hover::after {
+  opacity: 1;
+}
+
+.question-text {
+  transition: all 0.3s ease;
+}
+
+.faq-question:hover .question-text {
+  color: var(--first-color);
+  transform: translateX(5px);
+}
+
+.question-icon {
+  position: relative;
+  overflow: hidden;
+  transition: all 0.4s ease;
+}
+
+.question-icon::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(45deg, transparent, rgba(0, 0, 0, 0.1), transparent);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.faq-question:hover .question-icon::before {
+  opacity: 1;
+}
+
+.faq-question:hover .question-icon {
+  transform: scale(1.1);
+  box-shadow: 0 4px 12px rgba(240, 185, 11, 0.3);
+}
+
+.faq-question.active .question-icon {
+  transform: rotate(180deg) scale(1.1);
+  box-shadow: 0 4px 12px rgba(240, 185, 11, 0.3);
+}
+
+/* FAQ Answer Animations */
+.faq-answer {
+  transition: all 0.4s ease;
+  opacity: 0;
+}
+
+.faq-answer.open {
+  opacity: 1;
+}
+
+.answer-content {
+  position: relative;
+  transform: translateY(-10px);
+  transition: transform 0.3s ease;
+}
+
+.faq-answer.open .answer-content {
+  transform: translateY(0);
+}
+
+.answer-content::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(95deg, var(--second-color) 0%, var(--first-color) 100%);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.3s ease;
+  transition-delay: 0.2s;
+}
+
+.faq-answer.open .answer-content::before {
+  transform: scaleX(1);
+}
+
+.answer-content p {
+  opacity: 0;
+  transform: translateY(10px);
+  transition: all 0.3s ease;
+  transition-delay: 0.1s;
+}
+
+.faq-answer.open .answer-content p {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* FAQ CTA Animations */
+.faq-cta {
+  position: relative;
+  overflow: hidden;
+}
+
+.faq-cta::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(circle at 30% 50%, rgba(240, 185, 11, 0.05) 0%, transparent 50%);
+  animation: ctaGlow 8s ease-in-out infinite;
+}
+
+@keyframes ctaGlow {
+  0%, 100% { 
+    opacity: 0.5;
+    transform: scale(1);
+  }
+  50% { 
+    opacity: 0.8;
+    transform: scale(1.1);
+  }
+}
+
+.cta-card {
+  opacity: 0;
+  transform: translateY(50px);
+  transition: all 0.8s ease;
+  z-index: 2;
+}
+
+.cta-card.animate-in {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.cta-card::before {
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.6s ease;
+}
+
+.cta-card.animate-in::before {
+  transform: scaleX(1);
+}
+
+.cta-card::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(45deg, transparent, rgba(240, 185, 11, 0.03), transparent);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.cta-card:hover::after {
+  opacity: 1;
+}
+
+.cta-content h3 {
+  opacity: 0;
+  transform: translateX(-30px);
+  transition: all 0.6s ease;
+  transition-delay: 0.2s;
+}
+
+.cta-card.animate-in .cta-content h3 {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.cta-content p {
+  opacity: 0;
+  transform: translateX(-30px);
+  transition: all 0.6s ease;
+  transition-delay: 0.4s;
+}
+
+.cta-card.animate-in .cta-content p {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.cta-buttons {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.6s ease;
+  transition-delay: 0.6s;
+}
+
+.cta-card.animate-in .cta-buttons {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.cta-button {
+  position: relative;
+  overflow: hidden;
+  transition: all 0.4s ease;
+}
+
+.cta-button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.5s ease;
+}
+
+.cta-button:hover::before {
+  left: 100%;
+}
+
+.cta-button.primary:hover {
+  transform: translateY(-3px) scale(1.05);
+  box-shadow: 0 12px 25px rgba(240, 185, 11, 0.3);
+}
+
+.cta-button.secondary:hover {
+  transform: translateY(-3px) scale(1.05);
+  box-shadow: 0 8px 20px var(--shadow-color);
+}
+
+.cta-visual {
+  opacity: 0;
+  transform: translateX(30px);
+  transition: all 0.6s ease;
+  transition-delay: 0.8s;
+}
+
+.cta-card.animate-in .cta-visual {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.support-icon {
+  animation: supportPulse 3s ease-in-out infinite;
+  position: relative;
+  overflow: hidden;
+}
+
+.support-icon::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+  animation: supportShine 2s ease-in-out infinite;
+}
+
+@keyframes supportPulse {
+  0%, 100% { 
+    transform: scale(1);
+    box-shadow: 0 0 0 0 rgba(240, 185, 11, 0.4);
+  }
+  50% { 
+    transform: scale(1.1);
+    box-shadow: 0 0 0 25px rgba(240, 185, 11, 0);
+  }
+}
+
+@keyframes supportShine {
+  0% { transform: translateX(-100%) rotate(45deg); }
+  50% { transform: translateX(100%) rotate(45deg); }
+  100% { transform: translateX(100%) rotate(45deg); }
+}
+
+/* Mobile-specific animations */
+@media screen and (max-width: 768px) {
+  .faq-hero::before {
+    animation-duration: 12s;
+  }
+  
+  .faq-title::after {
+    animation-duration: 2s;
+  }
+  
+  .faq-category {
+    transform: translateY(30px);
+  }
+  
+  .faq-category.animate-in {
+    transform: translateY(0);
+  }
+  
+  .faq-item {
+    transform: translateX(-10px);
+  }
+  
+  .faq-item.animate-in {
+    transform: translateX(0);
+  }
+  
+  .cta-card {
+    transform: translateY(30px);
+  }
+  
+  .cta-card.animate-in {
+    transform: translateY(0);
+  }
+  
+  .cta-buttons {
+    flex-direction: column;
+    gap: 1rem;
+  }
+  
+  .cta-button {
+    width: 100%;
+    justify-content: center;
+  }
+  
+  .support-icon {
+    animation-duration: 2.5s;
+  }
+  
+  .search-container {
+    transform: translateY(20px);
+  }
+  
+  .search-container.animate-in {
+    transform: translateY(0);
+  }
+  
+  .search-box:focus-within {
+    transform: translateY(-1px);
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .faq-hero::before {
+    animation-duration: 15s;
+  }
+  
+  .faq-title::after {
+    animation-duration: 2.5s;
+  }
+  
+  .faq-category {
+    transform: translateY(20px);
+  }
+  
+  .faq-category.animate-in {
+    transform: translateY(0);
+  }
+  
+  .cta-card {
+    transform: translateY(20px);
+  }
+  
+  .cta-card.animate-in {
+    transform: translateY(0);
+  }
+  
+  .cta-button {
+    padding: 1rem 1.5rem;
+  }
+  
+  .support-icon {
+    animation-duration: 2s;
+  }
+  
+  .search-box {
+    padding: 0.75rem 1rem;
+  }
+  
+  .search-input {
+    font-size: 0.9rem;
+  }
+}
+
+/* Animation delays for staggered effects */
+.faq-category:nth-child(1) { transition-delay: 0.1s; }
+.faq-category:nth-child(2) { transition-delay: 0.2s; }
+.faq-category:nth-child(3) { transition-delay: 0.3s; }
+.faq-category:nth-child(4) { transition-delay: 0.4s; }
+
+.faq-item:nth-child(1) { transition-delay: 0.1s; }
+.faq-item:nth-child(2) { transition-delay: 0.2s; }
+.faq-item:nth-child(3) { transition-delay: 0.3s; }
+.faq-item:nth-child(4) { transition-delay: 0.4s; }
+.faq-item:nth-child(5) { transition-delay: 0.5s; }
+
